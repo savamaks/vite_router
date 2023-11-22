@@ -3,9 +3,9 @@ import { requestDisk } from "../requestApi/request";
 
 const One = ({str}:any) => {
     const [data, setData] = useState<any>({});
-    console.log(data);
+    // console.log(data);
     const downloadLink = async () => {
-        
+
         const result = await requestDisk(str);
         setData(result);
     };

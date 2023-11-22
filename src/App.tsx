@@ -17,10 +17,8 @@ export default function App() {
                         </li>
                         {linkStr.map((el: string, index: number) => {
                             return (
-                                <li  key={index}>
-                                    <Link to={`/${el}`}>
-                                        {el}
-                                    </Link>
+                                <li key={index}>
+                                    <Link to={`/${el}`}>{el}</Link>
                                 </li>
                             );
                         })}
@@ -31,8 +29,8 @@ export default function App() {
                     {linkStr.map((el: string, index: number) => {
                         return <Route key={index} path={`/${el}`} element={<One str={el} />} />;
                     })}
-
-                    <Route path="/" element={<Home />} errorElement={<ErrorBoundary />} />
+                    <Route path="*" element={<PageNotFound />} />
+                    <Route path="/" element={<Home />} />
                 </Routes>
             </div>
         </Router>
@@ -43,9 +41,10 @@ function Home() {
     return <h2>Home</h2>;
 }
 
-function ErrorBoundary() {
-    let error = useRouteError();
-    console.error(error);
-    // Uncaught ReferenceError: path is not defined
-    return <div>Dang!</div>;
+function PageNotFound() {
+    return (
+        <div>
+            <h2>404 Page not found</h2>
+        </div>
+    );
 }
