@@ -14,10 +14,16 @@ export default function App() {
                     <ul>
                         <li>
                             <Link to="/">Home</Link>
-                            {linkStr.map((el: string, index: number) => {
-                                return <Link key={index} to={`/${el}`}></Link>;
-                            })}
                         </li>
+                        {linkStr.map((el: string, index: number) => {
+                            return (
+                                <li  key={index}>
+                                    <Link to={`/${el}`}>
+                                        {el}
+                                    </Link>
+                                </li>
+                            );
+                        })}
                     </ul>
                 </nav>
 
