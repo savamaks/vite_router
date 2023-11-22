@@ -14,19 +14,17 @@ export default function App() {
                     <ul>
                         <li>
                             <Link to="/">Home</Link>
+                            {linkStr.map((el: string, index: number) => {
+                                return <Link key={index} to={`/${el}`}></Link>;
+                            })}
                         </li>
                     </ul>
                 </nav>
 
-                {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
                 <Routes>
                     {linkStr.map((el: string, index: number) => {
                         return <Route key={index} path={`/${el}`} element={<One str={el} />} />;
                     })}
-                    {/* <Route path="/4Y6zxoNUiyMPPA" element={<One str={"4Y6zxoNUiyMPPA"} />} />
-
-                    <Route path="/users" element={<Users />} /> */}
 
                     <Route path="/" element={<Home />} errorElement={<ErrorBoundary />} />
                 </Routes>
